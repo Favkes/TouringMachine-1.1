@@ -1,8 +1,8 @@
 
-""" This file contains the TuringMachine class that executes .tmc files after parsing via the fileparser module. """
+""" This file contains the TouringMachine class that executes .tmc files after parsing via the fileparser module. """
 
 
-class TuringMachine:
+class TouringMachine:
     class State:
         id: int
         cases: dict[str, tuple]

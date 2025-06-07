@@ -1,13 +1,13 @@
-import turingmachine
+import touringmachine
 
 
-""" This file contains the parser class used for deconstructing the .tmc file and generating the turing machine structure. """
+""" This file contains the parser class used for deconstructing the .tmc file and generating the Touring machine structure. """
 
 
 class Parser:
     filename: str
     params: dict[str, ...] # type: ignore
-    states: list[turingmachine.TuringMachine.State]
+    states: list[touringmachine.TouringMachine.State]
 
     
     def __init__(self, filename: str = 'tape_example.txt'):
@@ -75,7 +75,7 @@ class Parser:
         
         states = []
         for id, values in directives.items():
-            new = turingmachine.TuringMachine.State(id, values)
+            new = touringmachine.TouringMachine.State(id, values)
             states.append(new)
         
         self.states = states

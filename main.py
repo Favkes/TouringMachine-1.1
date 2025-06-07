@@ -1,16 +1,16 @@
-import turingmachine
+import touringmachine
 import fileparser
 
 
 """ This code serves as an example on how to use this package. """
 
 def main():
-    parser = fileparser.Parser(filename="check_if_mail.txt")
+    parser = fileparser.Parser(filename="check_if_mail.tmc")
     parser.load()
     parser.parse()
     print(parser)
 
-    machine = turingmachine.TuringMachine(
+    machine = touringmachine.TouringMachine(
         start=0,
         tape=parser.params['tape'],
         states=parser.states,
