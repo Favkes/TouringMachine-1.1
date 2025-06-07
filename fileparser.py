@@ -46,6 +46,7 @@ class Parser:
 
         self.params['blank'] = self.params['blank'][0]
         self.params['start'] = int(self.params['start'][0][1:])
+        self.params['index'] = int(self.params['index'][0])
         self.params['tape']  = self.params['tape'][0]
 
         directives: dict[int, 

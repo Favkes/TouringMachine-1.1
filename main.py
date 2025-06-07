@@ -5,13 +5,13 @@ import fileparser
 """ This code serves as an example on how to use this package. """
 
 def main():
-    parser = fileparser.Parser(filename="check_if_mail.tmc")
+    parser = fileparser.Parser(filename="is_that_mail.tmc")
     parser.load()
     parser.parse()
     print(parser)
 
     machine = touringmachine.TouringMachine(
-        start=0,
+        start=parser.params['index'],
         tape=parser.params['tape'],
         states=parser.states,
         outputs=parser.params['end'],

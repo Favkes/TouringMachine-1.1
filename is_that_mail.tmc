@@ -1,16 +1,30 @@
+# Lines starting with the '#' symbol will be skipped at parsing :)
+
 alphabet: # _ . @ a b c d e f g h i j k l m n o p q r s t u v w x y z 0 1 2 3 4 5 6 7 8 9
 
 blank: #
 
+# This state will be called initially
 start: s0
 
-end: TAK NIE
+# The machine will start from this index on the tape
+index: 0
 
+# All of thekeywords defined here can be used to halt the machine and return them as output.
+end: YES NO
+
+# The machine will use the following string as an input tape (including the #'s)
 tape: #john_doe@gmail..com#
 
-transitions:
 
-# Przed '@' - dowolne litery, cyfry, podkreślniki
+# The instructons are shaped as follows:
+# <Name of instruction> <Cell value> <Next cell> <New cell value> <Next state>
+# So, for example: tape="abcd", start=s0, pos=0, instructon="s0 a -> d s3"
+# Will execute s0 at pos=0, check the value of the character and see if it is mentioned
+# inside s0's definition, substitute it with 'd', move one cell to the right (onto 'b')
+# and switch to state (s3) to execute next.
+
+
 s0 # -> # s1
 
 s1 a -> # s1
@@ -49,11 +63,12 @@ s1 6 -> # s1
 s1 7 -> # s1
 s1 8 -> # s1
 s1 9 -> # s1
+
+# if '.' or '_' -> call s3 to check for unallowed combinations
 s1 . -> # s3
 s1 _ -> # s3
 
-# if . or _ -> call s3 to check for unallowed combinations
-
+# if @ -> second segment of the address
 s1 @ -> # s2
 
 s2 a -> # s2
@@ -92,10 +107,14 @@ s2 6 -> # s2
 s2 7 -> # s2
 s2 8 -> # s2
 s2 9 -> # s2
+
+# s4 works the same way as s3, except it calls back to s2.
 s2 . -> # s4
-s2 _ <- NIE s2
-s2 @ <- NIE s2
-s2 # <- TAK s2
+
+# Halting cases
+s2 _ <- NO s2
+s2 @ <- NO s2
+s2 # <- YES s2
 
 s3 a -> # s1
 s3 b -> # s1
@@ -133,9 +152,11 @@ s3 6 -> # s1
 s3 7 -> # s1
 s3 8 -> # s1
 s3 9 -> # s1
-s3 . <- NIE s3
-s3 _ <- NIE s3
-s3 @ <- NIE s3
+
+# More halting cases
+s3 . <- NO s3
+s3 _ <- NO s3
+s3 @ <- NO s3
 
 s4 a -> # s2
 s4 b -> # s2
@@ -173,6 +194,8 @@ s4 6 -> # s2
 s4 7 -> # s2
 s4 8 -> # s2
 s4 9 -> # s2
-s4 . <- NIE s4
-s4 _ <- NIE s4
-s4 @ <- NIE s4
+
+# More halting cases
+s4 . <- NO s4
+s4 _ <- NO s4
+s4 @ <- NO s4
