@@ -81,7 +81,6 @@ class Parser:
         
         self.states = states
 
-    
     def __str__(self):
         return "Parser class object of Keys: " + str(list(self.params.keys()))
 
