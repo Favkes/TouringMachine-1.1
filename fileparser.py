@@ -1,6 +1,9 @@
 import turingmachine
 
 
+""" This file contains the parser class used for deconstructing the .tmc file and generating the turing machine structure. """
+
+
 class Parser:
     filename: str
     params: dict[str, ...] # type: ignore

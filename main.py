@@ -2,6 +2,8 @@ import turingmachine
 import fileparser
 
 
+""" This code serves as an example on how to use this package. """
+
 def main():
     parser = fileparser.Parser(filename="check_if_mail.txt")
     parser.load()
