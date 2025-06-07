@@ -57,22 +57,22 @@ class Parser:
         # directives[state_id][current_value] = (dir, new_value, next_state_id)
 
         for directive in self.params['directives']:
-            state, key, dir, new_val, next_state = directive
+            state, key, direction, new_val, next_state = directive
 
-            print(state, key, dir, new_val, next_state)
+            print(state, key, direction, new_val, next_state)
 
             id = int(state[1:])
             next_state_id = int(next_state[1:])
 
-            dir = dir.replace('-', '')
-            if dir == '>':
-                dir = 'R'
+            direction = direction.replace('-', '')
+            if direction == '>':
+                direction = 'R'
             else:
-                dir = 'L'
+                direction = 'L'
 
             if id not in directives:
                 directives[id] = {}
-            directives[id][key] = (dir, new_val, next_state_id)
+            directives[id][key] = (direction, new_val, next_state_id)
         
         states = []
         for id, values in directives.items():

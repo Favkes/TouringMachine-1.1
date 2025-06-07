@@ -15,8 +15,8 @@ class TouringMachine:
         def __str__(self):
             body = f"s{self.id}:\n"
             for key, values in self.cases.items():
-                dir, new_val, next_state_id = values
-                body += f"|   {key}: <{new_val}, {dir}, s{next_state_id}>\n"
+                direction, new_val, next_state_id = values
+                body += f"|   {key}: <{new_val}, {direction}, s{next_state_id}>\n"
             return body
 
         def __repr__(self):
