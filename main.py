@@ -1,4 +1,4 @@
-import touringmachine
+import turingmachine
 import fileparser
 
 
@@ -10,7 +10,7 @@ def main():
     parser.parse()
     print(parser)
 
-    machine = touringmachine.TouringMachine(
+    machine = turingmachine.TuringMachine(
         start=parser.params['index'],
         tape=parser.params['tape'],
         states=parser.states,
